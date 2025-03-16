@@ -1,30 +1,24 @@
 package de.schnitzel.challenges;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import dev.jorel.commandapi.CommandAPICommand;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
-public class ChallengesCommand implements CommandExecutor {
+public class ChallengesCommand {
 
-    private final de.schnitzel.challenges.Challenges Challenges;
+    public ChallengesCommand(Challenges plugin) {
 
-    public ChallengesCommand(de.schnitzel.challenges.Challenges plugin) {
-        this.Challenges = plugin;
+        new CommandAPICommand("challenges")
+            .executes((sender, args) -> {
+                if (sender instanceof Player player) {
+                    try {
+                        ChallengesUI challengesUI = new ChallengesUI(plugin);
+                        player.openInventory(challengesUI.getInventory());
+                    } catch (Exception e) {
+                        player.sendMessage("Error: " + e.getMessage());
+                    }
+                }
+            })
+            .register();
     }
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            try {
-                ChallengesUI challengesUI = new ChallengesUI(Challenges);
-                player.openInventory(challengesUI.getInventory());
-            } catch (Exception e) {
-                player.sendMessage("" + e);
-            }
-        }
-        return false;
-    }
 }

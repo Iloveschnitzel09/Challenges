@@ -78,14 +78,14 @@ public class ChallengesUI implements InventoryHolder, Listener {
                         String name = meta.getItemName();
                         List<String> lore = meta.getLore();
 
-                        plugin.data[i] = ! plugin.data[i];
+                        plugin.data[i] = !plugin.data[i];
 
                         if (!plugin.data[i]) {
                             item = new ItemStack(Material.RED_DYE);
                         } else {
                             item = new ItemStack(Material.GREEN_DYE);
                         }
-                        System.out.println(i + " " +  plugin.data[i]);
+                        System.out.println(i + " " + plugin.data[i]);
 
                         meta.setItemName(name);
                         meta.setLore(lore);

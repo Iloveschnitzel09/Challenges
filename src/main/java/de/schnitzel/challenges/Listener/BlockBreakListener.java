@@ -24,7 +24,7 @@ public class BlockBreakListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
-        if (Challenges.getInstance().data[0]){
+        if (Challenges.getInstance().data[0]) {
             Material material = e.getBlock().getType();
             Location location = e.getBlock().getLocation();
 
@@ -59,7 +59,7 @@ public class BlockBreakListener implements Listener {
 
             location.add(0.5, 0, 0.5);
 
-            if(entityMaterials.containsKey(material)) { // Prüft, ob das Material bereits ein Entity Typ hat
+            if (entityMaterials.containsKey(material)) { // Prüft, ob das Material bereits ein Entity Typ hat
                 location.getWorld().spawnEntity(location, entityMaterials.get(material)); //wenn ja, spawnt die entity aus der Map
             } else {
 

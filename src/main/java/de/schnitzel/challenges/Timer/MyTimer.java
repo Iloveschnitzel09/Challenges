@@ -22,9 +22,9 @@ public class MyTimer {
         run();
     }
 
-    public void sendActionBar(){
-        for(Player player : Bukkit.getOnlinePlayers()){
-            if(!isRunning()){
+    public void sendActionBar() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (!isRunning()) {
                 player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.RED + "Timer ist Pausiert"));
                 continue;
             }
@@ -34,19 +34,18 @@ public class MyTimer {
     }
 
 
-
-    private void run(){
-        new BukkitRunnable(){
+    private void run() {
+        new BukkitRunnable() {
             @Override
             public void run() {
 
                 sendActionBar();
 
-                if ( !isRunning()){
+                if (!isRunning()) {
                     return;
                 }
 
-                setTime( getTime() + 1);
+                setTime(getTime() + 1);
             }
         }.runTaskTimer(Challenges.getInstance(), 20, 20);
     }

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id("io.freefair.lombok") version "8.13"
 }
 
 group = 'de.schnitzel'
@@ -19,6 +20,7 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("dev.jorel:commandapi-bukkit-core:9.7.0")
 }
 
 def targetJavaVersion = 21

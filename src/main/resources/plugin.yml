@@ -2,3 +2,4 @@ name: Challenges
 version: '1.0'
 main: de.schnitzel.challenges.Challenges
 api-version: '1.21'
+depend: [CommandAPI]
