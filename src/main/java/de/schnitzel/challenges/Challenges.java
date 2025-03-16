@@ -21,7 +21,7 @@ public final class Challenges extends JavaPlugin {
         manager.registerEvents(new MobKillListener(), this);
         manager.registerEvents(new ChallengesUI(this), this);
 
-        new ChallengesCommand(this);
+        new ChallengesCommand("challenges").register();
         new NewTimerCommand("timer").register();
 
         timer = new MyTimer(false, 0);
