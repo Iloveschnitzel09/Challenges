@@ -24,7 +24,7 @@ public final class Challenges extends JavaPlugin {
         new ChallengesCommand("challenges").register();
         new NewTimerCommand("timer").register();
 
-        timer = new MyTimer(false, 0);
+        timer = new MyTimer();
 
         saveDefaultConfig();
     }

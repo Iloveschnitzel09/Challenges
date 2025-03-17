@@ -1,8 +1,6 @@
 package de.schnitzel.challenges;
 
 import dev.jorel.commandapi.CommandAPICommand;
-import org.bukkit.plugin.java.JavaPlugin;
-
 
 public class ChallengesCommand extends CommandAPICommand {
 
