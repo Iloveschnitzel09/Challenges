@@ -1,11 +1,11 @@
-package de.schnitzel.challenges.Timer;
+package de.schnitzel.challenges.timer;
 
 import de.schnitzel.challenges.Challenges;
 import lombok.Getter;
 import lombok.Setter;
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -41,11 +41,12 @@ public class MyTimer extends BukkitRunnable {
     public void sendActionBar() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (!isRunning()) {
-                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.RED + "Timer ist pausiert"));
+                player.sendActionBar(Component.text("timer ist pausiert", NamedTextColor.RED));
                 continue;
             }
 
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD.toString() + ChatColor.BOLD + getTime()));
+            player.sendActionBar(Component.text(getTime(), NamedTextColor.GOLD, TextDecoration.BOLD));
+
         }
     }
 

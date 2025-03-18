@@ -1,7 +1,7 @@
-package de.schnitzel.challenges.Timer.subcommand;
+package de.schnitzel.challenges.timer.subcommand;
 
 import de.schnitzel.challenges.Challenges;
-import de.schnitzel.challenges.Timer.MyTimer;
+import de.schnitzel.challenges.timer.MyTimer;
 import dev.jorel.commandapi.CommandAPICommand;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -10,7 +10,7 @@ import org.bukkit.World;
 
 
 /**
- * Timer Start Command
+ * timer Start Command
  * <p>
  * Nutzt die AdventureAPI (https://docs.advntr.dev/), um Deprecation zu vermeiden
  * nutzt "executesPlayer", um es nur durch Spieler ausführbar zu machen
@@ -27,7 +27,7 @@ public class NewTimerStartCommand extends CommandAPICommand {
             World world = player.getWorld();
 
             if (timer.isRunning()) {
-                player.sendMessage(Component.text("Der Timer läuft bereits!", NamedTextColor.RED));
+                player.sendMessage(Component.text("Der timer läuft bereits!", NamedTextColor.RED));
                 return;
             }
 
@@ -37,7 +37,7 @@ public class NewTimerStartCommand extends CommandAPICommand {
             timer.setTime(0);
             timer.setRunning(true);
 
-            player.sendMessage(Component.text("Der Timer wurde gestartet.", NamedTextColor.GREEN));
+            player.sendMessage(Component.text("Der timer wurde gestartet.", NamedTextColor.GREEN));
         });
     }
 }

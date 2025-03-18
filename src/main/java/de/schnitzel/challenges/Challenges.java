@@ -1,9 +1,9 @@
 package de.schnitzel.challenges;
 
-import de.schnitzel.challenges.Listener.BlockBreakListener;
-import de.schnitzel.challenges.Listener.MobKillListener;
-import de.schnitzel.challenges.Timer.MyTimer;
-import de.schnitzel.challenges.Timer.NewTimerCommand;
+import de.schnitzel.challenges.listener.BlockBreakListener;
+import de.schnitzel.challenges.listener.MobKillListener;
+import de.schnitzel.challenges.timer.MyTimer;
+import de.schnitzel.challenges.timer.NewTimerCommand;
 import lombok.Getter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;

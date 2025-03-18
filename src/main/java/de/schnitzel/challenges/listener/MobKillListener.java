@@ -1,4 +1,4 @@
-package de.schnitzel.challenges.Listener;
+package de.schnitzel.challenges.listener;
 
 import de.schnitzel.challenges.Challenges;
 import org.bukkit.Material;

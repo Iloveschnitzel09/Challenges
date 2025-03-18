@@ -1,6 +1,6 @@
-package de.schnitzel.challenges.Timer;
+package de.schnitzel.challenges.timer;
 
-import de.schnitzel.challenges.Timer.subcommand.*;
+import de.schnitzel.challenges.timer.subcommand.*;
 import dev.jorel.commandapi.CommandAPICommand;
 
 
