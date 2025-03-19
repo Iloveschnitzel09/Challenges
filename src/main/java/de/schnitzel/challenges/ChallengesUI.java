@@ -1,6 +1,7 @@
 package de.schnitzel.challenges;
 
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ChallengesUI implements InventoryHolder, Listener {
+
     private ItemStack item = new ItemStack(Material.GREEN_DYE);
     private ItemMeta meta = item.getItemMeta();
     private final Inventory inventory;
@@ -22,7 +24,7 @@ public class ChallengesUI implements InventoryHolder, Listener {
     public ChallengesUI(Challenges plugin) {
         this.plugin = plugin;
         // Macht ein Inventar mit 27 Slots
-        this.inventory = plugin.getServer().createInventory(this, 27, "Challenge Auswahl");
+        this.inventory = plugin.getServer().createInventory(this, 27, Component.text("Challenge Auswahl"));
         for (int i = 0; i <= 26; i++) {
             if (i > 8 && i < 18) {
                 switch (i) {
@@ -40,17 +42,17 @@ public class ChallengesUI implements InventoryHolder, Listener {
             }
             item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
 
-            meta.setItemName(" ");
-            meta.setLore(null);
+            meta.itemName(Component.text(" "));
+            meta.lore(null);
 
             item.setItemMeta(meta);
             this.inventory.setItem(i, item);
         }
     }
 
-    public void setMeta(String mate, String lore, int i) {
-        meta.setItemName(ChatColor.BLUE + mate);
-        meta.setLore(List.of(ChatColor.GRAY + lore));
+    public void setMeta(String _meta, String lore, int i) {
+        meta.itemName(Component.text(NamedTextColor.BLUE + _meta));
+        meta.lore(List.of(Component.text(lore, NamedTextColor.GRAY)));
 
         if (plugin.data[i - 9]) {
             item = new ItemStack(Material.GREEN_DYE);
@@ -75,8 +77,8 @@ public class ChallengesUI implements InventoryHolder, Listener {
                 for (int i = 0; i < 9; i++) {
                     if (e.getSlot() == i + 9) {
                         meta = e.getCurrentItem().getItemMeta();
-                        String name = meta.getItemName();
-                        List<String> lore = meta.getLore();
+                        String name = meta.itemName().toString();
+                        List<Component> lore = meta.lore();
 
                         plugin.data[i] = !plugin.data[i];
 
@@ -87,8 +89,8 @@ public class ChallengesUI implements InventoryHolder, Listener {
                         }
                         System.out.println(i + " " + plugin.data[i]);
 
-                        meta.setItemName(name);
-                        meta.setLore(lore);
+                        meta.itemName(Component.text(name));
+                        meta.lore(lore);
                         item.setItemMeta(meta);
 
                         e.getInventory().setItem(i + 9, item);
