@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id("io.freefair.lombok") version "8.13"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id 'de.eldoria.plugin-yml.bukkit' version '0.7.1'
 }
 
 group = 'de.schnitzel'
@@ -21,6 +23,14 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
     compileOnly("dev.jorel:commandapi-bukkit-core:9.7.0")
+    implementation 'com.github.stefvanschie.inventoryframework:IF:0.10.19'
+    library 'com.google.code.gson:gson:2.10.1'
+}
+
+bukkit {
+    main = 'de.schnitzel.challenges.Challenges'
+    foliaSupported = true
+    apiVersion = '1.13'
 }
 
 def targetJavaVersion = 21
