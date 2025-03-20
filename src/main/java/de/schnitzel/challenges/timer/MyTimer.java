@@ -22,7 +22,7 @@ public class MyTimer extends BukkitRunnable {
         @NotNull FileConfiguration config = Challenges.getInstance().getConfig();
         this.running = false;
         this.time = config.getInt("timer.time", 0);
-
+        this.runTaskTimer(Challenges.getInstance(), 20, 20);
         run();
     }
 
@@ -31,7 +31,7 @@ public class MyTimer extends BukkitRunnable {
         sendActionBar();
 
         if (!isRunning()) {
-            this.runTaskTimer(Challenges.getInstance(), 20, 20);
+
             return;
         }
 
