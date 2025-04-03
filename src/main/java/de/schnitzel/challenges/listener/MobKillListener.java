@@ -1,5 +1,6 @@
 package de.schnitzel.challenges.listener;
 
+import de.schnitzel.challenges.ChallengeData;
 import de.schnitzel.challenges.Challenges;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -18,10 +19,12 @@ public class MobKillListener implements Listener {
     private final SecureRandom random = new SecureRandom();
     private final Map<EntityType, Material> item2drop = new HashMap<>();
 
+    ChallengeData challengeData = ChallengeData.Companion.getInstance();
+
     @EventHandler
     public void onMobKill(EntityDeathEvent e) {
         Material[] materials = Arrays.stream(Material.values()).filter(Material::isItem).toArray(Material[]::new);
-        if (Challenges.getInstance().data[2]) {
+        if (challengeData.isRandomMobDropsEnabled()) {
             EntityType entity = e.getEntity().getType();
 
             e.getDrops().clear();
@@ -38,7 +41,7 @@ public class MobKillListener implements Listener {
                 item2drop.put(entity, randomMaterial); // Speichert die Zuordnung
 
             }
-        } else if (Challenges.getInstance().data[3]) {
+        } else if (challengeData.isSuperRandomMobDropsEnabled()) {
 
             e.getDrops().clear();
 

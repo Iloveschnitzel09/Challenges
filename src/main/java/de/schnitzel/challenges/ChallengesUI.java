@@ -25,6 +25,7 @@ public class ChallengesUI implements InventoryHolder, Listener {
         this.plugin = plugin;
         // Macht ein Inventar mit 27 Slots
         this.inventory = plugin.getServer().createInventory(this, 27, Component.text("Challenge Auswahl"));
+
         for (int i = 0; i <= 26; i++) {
             if (i > 8 && i < 18) {
                 switch (i) {
@@ -51,14 +52,14 @@ public class ChallengesUI implements InventoryHolder, Listener {
     }
 
     public void setMeta(String _meta, String lore, int i) {
-        meta.itemName(Component.text(NamedTextColor.BLUE + _meta));
+        meta.itemName(Component.text(_meta, NamedTextColor.BLUE));
         meta.lore(List.of(Component.text(lore, NamedTextColor.GRAY)));
 
-        if (plugin.data[i - 9]) {
+        /*if (plugin.data[i - 9]) {
             item = new ItemStack(Material.GREEN_DYE);
         } else {
             item = new ItemStack(Material.RED_DYE);
-        }
+        }*/
     }
 
     @Override
@@ -77,10 +78,10 @@ public class ChallengesUI implements InventoryHolder, Listener {
                 for (int i = 0; i < 9; i++) {
                     if (e.getSlot() == i + 9) {
                         meta = e.getCurrentItem().getItemMeta();
-                        String name = meta.itemName().toString();
+                        //String name = PlainTextComponentSerializer.plainText().serialize(meta.itemName());
                         List<Component> lore = meta.lore();
 
-                        plugin.data[i] = !plugin.data[i];
+                       /* plugin.data[i] = !plugin.data[i];
 
                         if (!plugin.data[i]) {
                             item = new ItemStack(Material.RED_DYE);
@@ -89,12 +90,12 @@ public class ChallengesUI implements InventoryHolder, Listener {
                         }
                         System.out.println(i + " " + plugin.data[i]);
 
-                        meta.itemName(Component.text(name));
+                        //meta.itemName(Component.text(name));
                         meta.lore(lore);
                         item.setItemMeta(meta);
 
                         e.getInventory().setItem(i + 9, item);
-                        e.setCancelled(true);
+                        */e.setCancelled(true);
                     }
                 }
             }

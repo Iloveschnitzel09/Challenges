@@ -1,5 +1,6 @@
 package de.schnitzel.challenges.listener;
 
+import de.schnitzel.challenges.ChallengeData;
 import de.schnitzel.challenges.Challenges;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
@@ -22,9 +23,10 @@ public class BlockBreakListener implements Listener {
     private final Map<Material, Material> item2drop = new HashMap<>();
     private final Object2ObjectMap<Material, EntityType> entityMaterials = new Object2ObjectOpenHashMap<>();
 
+    ChallengeData challengeData = ChallengeData.Companion.getInstance();
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
-        if (Challenges.getInstance().data[0]) {
+        if (challengeData.isRandomBlockDropsEnabled()) {
             Material material = e.getBlock().getType();
             Location location = e.getBlock().getLocation();
 
@@ -41,7 +43,7 @@ public class BlockBreakListener implements Listener {
                 item2drop.put(material, randomMaterial); // Speichert die Zuordnung
                 location.getWorld().dropItem(location, new ItemStack(randomMaterial));
             }
-        } else if (Challenges.getInstance().data[1]) {
+        } else if (challengeData.isSuperRandomBlockDropsEnabled()) {
 
             Location location = e.getBlock().getLocation();
 
@@ -52,7 +54,7 @@ public class BlockBreakListener implements Listener {
 
             location.getWorld().dropItem(location, new ItemStack(randomMaterial));
         }
-        if (Challenges.getInstance().data[4]) {
+        if (challengeData.isRandomMobSpawnsEnabled()) {
             Material material = e.getBlock().getType();
             Location location = e.getBlock().getLocation();
             EntityType selected = Arrays.stream(EntityType.values()).toList().get(random.nextInt(EntityType.values().length)); // Wenn nicht, sucht er sich eine random entity aus Entity.values()
@@ -67,7 +69,7 @@ public class BlockBreakListener implements Listener {
 
                 entityMaterials.put(material, selected); // → Da es ja noch nicht vorhanden war, wird es nun reingesetzt
             }
-        } else if (Challenges.getInstance().data[5]) {
+        } else if (challengeData.isSuperRandomMobSpawnsEnabled()) {
             EntityType selected = Arrays.stream(EntityType.values()).toList().get(random.nextInt(EntityType.values().length)); // Wenn nicht, sucht er sich eine random entity aus Entity.values()
             Location location = e.getBlock().getLocation();
             Material material = e.getBlock().getType();

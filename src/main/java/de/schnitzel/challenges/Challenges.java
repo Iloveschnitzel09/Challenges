@@ -2,6 +2,7 @@ package de.schnitzel.challenges;
 
 import de.schnitzel.challenges.listener.BlockBreakListener;
 import de.schnitzel.challenges.listener.MobKillListener;
+import de.schnitzel.challenges.listener.OnPhantomRideListener;
 import de.schnitzel.challenges.timer.MyTimer;
 import de.schnitzel.challenges.timer.NewTimerCommand;
 import lombok.Getter;
@@ -10,7 +11,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
 public final class Challenges extends JavaPlugin {
-    public boolean[] data = {false, true, false, false, false, true, false, false, false};
     public MyTimer timer;
 
     @Override
@@ -20,6 +20,7 @@ public final class Challenges extends JavaPlugin {
         manager.registerEvents(new BlockBreakListener(), this);
         manager.registerEvents(new MobKillListener(), this);
         manager.registerEvents(new ChallengesUI(this), this);
+        manager.registerEvents(new OnPhantomRideListener(), this);
 
         new ChallengesCommand("challenges").register();
         new NewTimerCommand("timer").register();

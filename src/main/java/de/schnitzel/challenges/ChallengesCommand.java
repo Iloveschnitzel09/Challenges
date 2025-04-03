@@ -9,8 +9,10 @@ public class ChallengesCommand extends CommandAPICommand {
 
         executesPlayer((player, args) -> {
             try {
-                ChallengesUI challengesUI = new ChallengesUI(Challenges.getInstance());
-                player.openInventory(challengesUI.getInventory());
+                //ChallengesUI challengesUI = new ChallengesUI(Challenges.getInstance());
+                //player.openInventory(challengesUI.getInventory());
+                NewChallengesMenu challengesMenu = new NewChallengesMenu();
+                challengesMenu.show(player);
             } catch (Exception e) {
                 player.sendMessage("Error: " + e.getMessage());
             }

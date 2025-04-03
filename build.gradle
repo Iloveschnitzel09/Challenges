@@ -1,19 +1,24 @@
 plugins {
     id 'java'
     id("io.freefair.lombok") version "8.13"
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-    id 'de.eldoria.plugin-yml.bukkit' version '0.7.1'
+    id "com.gradleup.shadow" version "8.3.6"
+    id "de.eldoria.plugin-yml.paper" version '0.7.1'
+    id 'org.jetbrains.kotlin.jvm'
 }
+
 
 group = 'de.schnitzel'
 version = '1.0'
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
+
     maven {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
     }
+
     maven {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
@@ -24,20 +29,32 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
     compileOnly("dev.jorel:commandapi-bukkit-core:9.7.0")
     implementation 'com.github.stefvanschie.inventoryframework:IF:0.10.19'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     library 'com.google.code.gson:gson:2.10.1'
 }
 
-bukkit {
+paper {
     main = 'de.schnitzel.challenges.Challenges'
-    foliaSupported = true
-    apiVersion = '1.13'
+
+    name = "ChallengesPlugin"
+    version = "$project.version"
+    website = "schnitzel.lecker"
+    author = "IloveSchnitzel09"
+
+    apiVersion = '1.21.4'
+    description = "A simple Challenges plugin for the newest version of minecraft."
+    serverDependencies{
+        'CommandAPI' {
+            load = 'BEFORE'
+            required = true
+            joinClasspath = true
+        }
+    }
 }
 
 def targetJavaVersion = 21
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
@@ -58,4 +75,11 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+kotlin {
+    jvmToolchain(21)
+}
+
+shadowJar {
+    relocate 'com.github.stefvanschie.inventoryframework', 'de.schnitzel.challenges.inventoryframework'
 }
