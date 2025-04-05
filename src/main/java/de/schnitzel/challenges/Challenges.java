@@ -19,7 +19,6 @@ public final class Challenges extends JavaPlugin {
 
         manager.registerEvents(new BlockBreakListener(), this);
         manager.registerEvents(new MobKillListener(), this);
-        manager.registerEvents(new ChallengesUI(this), this);
         manager.registerEvents(new OnPhantomRideListener(), this);
 
         new ChallengesCommand("challenges").register();
