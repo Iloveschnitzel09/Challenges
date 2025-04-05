@@ -41,12 +41,11 @@ public class MyTimer extends BukkitRunnable {
     public void sendActionBar() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (!isRunning()) {
-                player.sendActionBar(Component.text("timer ist pausiert", NamedTextColor.RED));
+                player.sendActionBar(Component.text("timer ist pausiert bei " + time, NamedTextColor.RED));
                 continue;
             }
 
             player.sendActionBar(Component.text(getTime(), NamedTextColor.GOLD, TextDecoration.BOLD));
-
         }
     }
 

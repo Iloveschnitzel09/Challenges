@@ -44,20 +44,26 @@ public class BlockBreakListener implements Listener {
                 location.getWorld().dropItem(location, new ItemStack(randomMaterial));
             }
         } else if (challengeData.isSuperRandomBlockDropsEnabled()) {
-
             Location location = e.getBlock().getLocation();
+            Material randomMaterial;
 
             e.setDropItems(false); // Verhindert normale Drops
 
-            Material[] materials = Arrays.stream(Material.values()).filter(Material::isItem).toArray(Material[]::new);
-            Material randomMaterial = materials[random.nextInt(materials.length)];
 
+            Material[] materials = Arrays.stream(Material.values()).filter(Material::isItem).toArray(Material[]::new);
+            do {
+                randomMaterial = materials[random.nextInt(materials.length)];
+            } while (randomMaterial.isLegacy());
             location.getWorld().dropItem(location, new ItemStack(randomMaterial));
         }
         if (challengeData.isRandomMobSpawnsEnabled()) {
             Material material = e.getBlock().getType();
             Location location = e.getBlock().getLocation();
-            EntityType selected = Arrays.stream(EntityType.values()).toList().get(random.nextInt(EntityType.values().length)); // Wenn nicht, sucht er sich eine random entity aus Entity.values()
+            EntityType selected;
+
+            do {
+                selected = Arrays.stream(EntityType.values()).toList().get(random.nextInt(EntityType.values().length)); // Wenn nicht, sucht er sich eine random entity aus Entity.values()
+            } while (!selected.isSpawnable());
 
             location.add(0.5, 0, 0.5);
 
@@ -70,13 +76,14 @@ public class BlockBreakListener implements Listener {
                 entityMaterials.put(material, selected); // → Da es ja noch nicht vorhanden war, wird es nun reingesetzt
             }
         } else if (challengeData.isSuperRandomMobSpawnsEnabled()) {
-            EntityType selected = Arrays.stream(EntityType.values()).toList().get(random.nextInt(EntityType.values().length)); // Wenn nicht, sucht er sich eine random entity aus Entity.values()
+            EntityType selected;
+            do {
+                selected = Arrays.stream(EntityType.values()).toList().get(random.nextInt(EntityType.values().length)); // Wenn nicht, sucht er sich eine random entity aus Entity.values()
+            } while (!selected.isSpawnable());
+
             Location location = e.getBlock().getLocation();
-            Material material = e.getBlock().getType();
 
             location.getWorld().spawnEntity(location, selected); // -> Spawnt auch diese
-
-            entityMaterials.put(material, selected); // → Da es ja noch nicht vorhanden war, wird es nun reingesetzt
         }
     }
 }
