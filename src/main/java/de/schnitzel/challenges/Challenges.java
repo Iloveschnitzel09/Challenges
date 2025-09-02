@@ -1,5 +1,6 @@
 package de.schnitzel.challenges;
 
+import de.schnitzel.challenges.commands.ChallengesCommand;
 import de.schnitzel.challenges.listener.BlockBreakListener;
 import de.schnitzel.challenges.listener.MobKillListener;
 import de.schnitzel.challenges.listener.OnPhantomRideListener;

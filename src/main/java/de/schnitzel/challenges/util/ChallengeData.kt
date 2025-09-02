@@ -1,4 +1,4 @@
-package de.schnitzel.challenges
+package de.schnitzel.challenges.util
 
 class  ChallengeData{
 

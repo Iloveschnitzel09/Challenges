@@ -1,4 +1,4 @@
-package de.schnitzel.challenges;
+package de.schnitzel.challenges.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;

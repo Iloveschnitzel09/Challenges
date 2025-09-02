@@ -1,7 +1,6 @@
 package de.schnitzel.challenges.listener;
 
-import de.schnitzel.challenges.ChallengeData;
-import de.schnitzel.challenges.Challenges;
+import de.schnitzel.challenges.util.ChallengeData;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import org.bukkit.Location;

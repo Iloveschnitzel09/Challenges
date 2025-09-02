@@ -1,5 +1,6 @@
-package de.schnitzel.challenges;
+package de.schnitzel.challenges.commands;
 
+import de.schnitzel.challenges.gui.NewChallengesMenu;
 import dev.jorel.commandapi.CommandAPICommand;
 
 public class ChallengesCommand extends CommandAPICommand {

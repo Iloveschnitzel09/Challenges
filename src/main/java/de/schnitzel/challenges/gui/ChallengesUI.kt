@@ -1,4 +1,4 @@
-package de.schnitzel.challenges
+package de.schnitzel.challenges.gui
 
 import com.github.stefvanschie.inventoryframework.adventuresupport.ComponentHolder
 import com.github.stefvanschie.inventoryframework.gui.GuiItem
@@ -7,13 +7,15 @@ import com.github.stefvanschie.inventoryframework.pane.OutlinePane
 import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
 import com.github.stefvanschie.inventoryframework.pane.util.Slot
+import de.schnitzel.challenges.util.ChallengeData
+import de.schnitzel.challenges.util.ItemBuilder
 import net.kyori.adventure.text.Component
 import org.bukkit.Material
 import org.bukkit.event.inventory.InventoryClickEvent
 
 class NewChallengesMenu() : ChestGui(3, ComponentHolder.of(Component.text("Challenge Auswahl"))) {
     init {
-        val data = ChallengeData.instance
+        val data = ChallengeData.Companion.instance
         val pane = StaticPane(1, 1, 9, 1, Pane.Priority.HIGH)
         val outlinePane = OutlinePane(0, 0, 9, 3, Pane.Priority.LOW)
 

@@ -1,7 +1,6 @@
 package de.schnitzel.challenges.listener;
 
-import de.schnitzel.challenges.ChallengeData;
-import de.schnitzel.challenges.Challenges;
+import de.schnitzel.challenges.util.ChallengeData;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
