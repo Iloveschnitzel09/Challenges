@@ -31,15 +31,14 @@ public class MobKillListener implements Listener {
             if (item2drop.containsKey(entity)) {
                 // Prüft, ob das Material bereits ein Item Typ hat
                 e.getDrops().add(new ItemStack(item2drop.get(entity))); //wenn ja, spawnt die Item aus der Map
-
-            } else {
-                // Wähle ein zufälliges Material und speichere es
-                Material randomMaterial = materials[random.nextInt(materials.length)];
-
-                e.getDrops().add(new ItemStack(randomMaterial));
-                item2drop.put(entity, randomMaterial); // Speichert die Zuordnung
-
+                return;
             }
+            // Wähle ein zufälliges Material und speichere es
+            Material randomMaterial = materials[random.nextInt(materials.length)];
+
+            e.getDrops().add(new ItemStack(randomMaterial));
+            item2drop.put(entity, randomMaterial); // Speichert die Zuordnung
+
         } else if (challengeData.isSuperRandomMobDropsEnabled()) {
 
             e.getDrops().clear();
