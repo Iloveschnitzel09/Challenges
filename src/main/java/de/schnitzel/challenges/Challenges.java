@@ -6,6 +6,7 @@ import de.schnitzel.challenges.listener.MobKillListener;
 import de.schnitzel.challenges.listener.OnPhantomRideListener;
 import de.schnitzel.challenges.timer.MyTimer;
 import de.schnitzel.challenges.timer.NewTimerCommand;
+import de.schnitzel.challenges.util.ConfigService;
 import lombok.Getter;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,6 +14,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 @Getter
 public final class Challenges extends JavaPlugin {
     public MyTimer timer;
+    ConfigService configService = new ConfigService();
+
+    public static Challenges getInstance() {
+        return getPlugin(Challenges.class);
+    }
 
     @Override
     public void onEnable() {
@@ -28,18 +34,16 @@ public final class Challenges extends JavaPlugin {
         timer = new MyTimer();
 
         saveDefaultConfig();
+        configService.load(this);
     }
 
     @Override
     public void onDisable() {
         getConfig().set("timer.time", timer.getTime());
 
+        configService.save(this);
         saveConfig();
 
-        getLogger().info("Alles gestoppt!"); // Geile nachricht
-    }
-
-    public static Challenges getInstance() {
-        return getPlugin(Challenges.class);
+        getLogger().info("Alles gestoppt!"); // Geile nachricht ~Red
     }
 }

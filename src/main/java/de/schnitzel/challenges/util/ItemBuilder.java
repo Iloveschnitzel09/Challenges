@@ -1,9 +1,5 @@
 package de.schnitzel.challenges.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Color;
@@ -14,16 +10,16 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemRarity;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.inventory.meta.*;
 import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * The type Item builder.
@@ -153,7 +149,7 @@ public class ItemBuilder {
      * Add stored Enchant item builder.
      *
      * @param enchantment the enchantment
-     * @param level the level
+     * @param level       the level
      * @return the item builder
      */
 

@@ -1,6 +1,6 @@
 package de.schnitzel.challenges.util
 
-class  ChallengeData{
+class ChallengeData {
 
     var isRandomBlockDropsEnabled = false
 
@@ -14,5 +14,7 @@ class  ChallengeData{
 
     var isSuperRandomMobSpawnsEnabled = false
 
-    companion object{val instance = ChallengeData()}
+    companion object {
+        val instance = ChallengeData()
+    }
 }

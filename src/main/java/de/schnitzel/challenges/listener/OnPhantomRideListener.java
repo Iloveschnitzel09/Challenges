@@ -12,7 +12,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 public class OnPhantomRideListener implements Listener {
 
     @EventHandler
-    public void onPhantomRide(PlayerInteractEntityEvent e){
+    public void onPhantomRide(PlayerInteractEntityEvent e) {
         Entity entity = e.getRightClicked();
         Player player = e.getPlayer();
 

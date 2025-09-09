@@ -1,0 +1,7 @@
+setting:
+  isRandomBlockDropsEnabled: false
+  isSuperRandomBlockDropsEnabled: false
+  isRandomMobDropsEnabled: false
+  isSuperRandomMobDropsEnabled: false
+  isRandomMobSpawnsEnabled: false
+  isSuperRandomMobSpawnsEnabled: false

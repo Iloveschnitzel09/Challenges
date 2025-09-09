@@ -5,7 +5,6 @@ import de.schnitzel.challenges.timer.MyTimer;
 import dev.jorel.commandapi.CommandAPICommand;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-
 import org.bukkit.World;
 
 
