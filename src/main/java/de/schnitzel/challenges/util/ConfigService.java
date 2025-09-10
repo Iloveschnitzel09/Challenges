@@ -29,5 +29,7 @@ public class ConfigService {
         sec.set("isSuperRandomMobDropsEnabled:", challengeData.isSuperRandomMobDropsEnabled());
         sec.set("isRandomMobSpawnsEnabled:", challengeData.isRandomMobSpawnsEnabled());
         sec.set("isSuperRandomMobSpawnsEnabled:", challengeData.isSuperRandomMobSpawnsEnabled());
+
+        plugin.saveConfig();
     }
 }

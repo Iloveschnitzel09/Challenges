@@ -40,9 +40,7 @@ public final class Challenges extends JavaPlugin {
     @Override
     public void onDisable() {
         getConfig().set("timer.time", timer.getTime());
-
         configService.save(this);
-        saveConfig();
 
         getLogger().info("Alles gestoppt!"); // Geile nachricht ~Red
     }

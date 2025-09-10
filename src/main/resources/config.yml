@@ -1,3 +1,5 @@
+timer:
+  time: 8
 setting:
   isRandomBlockDropsEnabled: false
   isSuperRandomBlockDropsEnabled: false
